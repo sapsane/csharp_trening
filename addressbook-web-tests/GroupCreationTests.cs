@@ -17,6 +17,7 @@ namespace WebAddressbookTests
         private StringBuilder verificationErrors;
         private string baseURL;
         private bool acceptNextAlert = true;
+      
 
         [SetUp]
         public void SetupTest()
@@ -24,6 +25,12 @@ namespace WebAddressbookTests
             driver = new FirefoxDriver();
             baseURL = "http://localhost/addressbook";
             verificationErrors = new StringBuilder();
+            OpenHomePage();
+
+            void OpenHomePage()
+            {
+                driver.Navigate().GoToUrl(baseURL);
+            }
         }
 
         [TearDown]
@@ -41,9 +48,10 @@ namespace WebAddressbookTests
         }
 
         [Test]
+      //  [Ignore("Skip this test")]
         public void GroupCreationTest()
         {
-            OpenHomePage();
+           
 
             Login(new AccountData("admin","secret"));
 
@@ -60,10 +68,7 @@ namespace WebAddressbookTests
             ReturnToGroupsPage();
             Logout();
 
-            void OpenHomePage()
-            {
-                driver.Navigate().GoToUrl(baseURL);
-            }
+          
         }
 
         private void Logout()

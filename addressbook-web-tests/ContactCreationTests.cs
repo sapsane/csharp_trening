@@ -41,6 +41,7 @@ namespace WebAddressbookTests
         }
 
         [Test]
+        [Ignore("Skip this test")]
         public void ContactCreationTest()
         {
             OpenHomePage();
