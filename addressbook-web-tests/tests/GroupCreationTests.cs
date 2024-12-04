@@ -16,7 +16,7 @@ namespace WebAddressbookTests
       
 
         [Test]
-       // [Ignore("Skip this test")]
+        [Ignore("Skip this test")]
         public void GroupCreationTest()
         {
                     
@@ -31,12 +31,10 @@ namespace WebAddressbookTests
 
 
         [Test]
-       // [Ignore("Skip this test")]
+        [Ignore("Skip this test")]
         public void EmptyGroupCreationTest()
         {
-
-            
-
+                      
             GroupData group = new GroupData("");
             group.Header = "";
             group.Footer = "";

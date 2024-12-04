@@ -18,6 +18,19 @@ namespace WebAddressbookTests
            
         }
 
+
+        public ContactHelper CreateContact(ContactData contact) 
+        {
+            manager.Navigator.OpenContactsPage();
+
+            InitContactCreation();
+            FillContactForm(contact);
+            SubminContactCreation();
+            ReturnToContactsPage();
+
+            return this;
+        }
+
         public ContactHelper SelectContact(int index)
         {
             driver.FindElement(By.XPath("//tr[" + index + "]/td/input")).Click();
@@ -67,12 +80,12 @@ namespace WebAddressbookTests
             return this;
         }
 
-
-
-
-
-
-
-
+        public ContactHelper Delete(int p)
+        {
+            manager.Navigator.OpenContactsPage();
+            SelectContact(p);
+            DeleteContact();
+            return this;
+        }
     }
 }
