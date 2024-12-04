@@ -13,33 +13,36 @@ namespace WebAddressbookTests
 
         
 
-        public ContactHelper(IWebDriver driver) : base(driver)
+        public ContactHelper(ApplicationManager manager) : base(manager)
         {
            
         }
 
-        public void SelectContact(int index)
+        public ContactHelper SelectContact(int index)
         {
             driver.FindElement(By.XPath("//tr[" + index + "]/td/input")).Click();
+            return this;
         }
 
 
 
 
-        public void DeleteContact()
+        public ContactHelper DeleteContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            return this;
         }
         //------------------------------------------------------------------------
 
 
 
-        public void InitContactCreation()
+        public ContactHelper InitContactCreation()
         {
             driver.FindElement(By.LinkText("add new")).Click();
+            return this;
         }
 
-        public void FillContactForm(ContactData contact)
+        public ContactHelper FillContactForm(ContactData contact)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
@@ -47,17 +50,21 @@ namespace WebAddressbookTests
             driver.FindElement(By.Name("lastname")).Click();
             driver.FindElement(By.Name("lastname")).Clear();
             driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
+            return this;
+
         }
 
 
-        public void SubminContactCreation()
+        public ContactHelper SubminContactCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            return this;
         }
 
-        public void ReturnToContactsPage()
+        public ContactHelper ReturnToContactsPage()
         {
             driver.FindElement(By.LinkText("home page")).Click();
+            return this;
         }
 
 

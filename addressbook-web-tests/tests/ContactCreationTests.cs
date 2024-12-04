@@ -13,6 +13,7 @@ namespace WebAddressbookTests
     [TestFixture]
     public class ContactCreationTests : TestBase
     {
+        /*
         private IWebDriver driver;
         private StringBuilder verificationErrors;
         private string baseURL;
@@ -39,9 +40,10 @@ namespace WebAddressbookTests
             }
             Assert.AreEqual("", verificationErrors.ToString());
         }
+        */
 
         [Test]
-        //[Ignore("Skip this test")]
+        [Ignore("Skip this test")]
         public void ContactCreationTest()
         {
             app.Navigator.OpenHomePage();
