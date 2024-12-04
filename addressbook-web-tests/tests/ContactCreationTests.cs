@@ -44,16 +44,16 @@ namespace WebAddressbookTests
         //[Ignore("Skip this test")]
         public void ContactCreationTest()
         {
-            OpenHomePage();
+            app.Navigator.OpenHomePage();
 
-            Login(new AccountData("admin","secret"));
-            OpenContactsPage();
-            InitContactCreation();
+            app.Auth.Login(new AccountData("admin","secret"));
+            app.Navigator.OpenContactsPage();
+            app.Contacts.InitContactCreation();
 
-            FillContactForm(new ContactData("Fistname1","Lastname1"));
-            SubminContactCreation();
-            ReturnToContactsPage();
-            Logout();
+            app.Contacts.FillContactForm(new ContactData("Fistname1","Lastname1"));
+            app.Contacts.SubminContactCreation();
+            app.Contacts.ReturnToContactsPage();
+            
         }
 
     

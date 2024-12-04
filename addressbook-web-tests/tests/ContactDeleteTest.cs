@@ -18,11 +18,11 @@ namespace WebAddressbookTests
         [Ignore("Skip this test")]
         public void ContactDeleteTest()
         {
-            OpenHomePage();
-            Login( new AccountData("admin", "secret"));
-            OpenContactsPage();
-            SelectContact(2);
-            DeleteContact();
+            app.Navigator.OpenHomePage();
+            app.Auth.Login( new AccountData("admin", "secret"));
+            app.Navigator.OpenContactsPage();
+            app.Contacts.SelectContact(2);
+            app.Contacts.DeleteContact();
         }
 
 

@@ -88,16 +88,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountData.cs" />
-    <Compile Include="ContactData.cs" />
-    <Compile Include="ContactDeleteTest.cs" />
-    <Compile Include="GroupData.cs" />
-    <Compile Include="GroupRemovalTest.cs" />
-    <Compile Include="TestBase.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="appManager\ApplicationManager.cs" />
+    <Compile Include="appManager\ContactHelper.cs" />
+    <Compile Include="appManager\GroupHelper.cs" />
+    <Compile Include="appManager\HelperBase.cs" />
+    <Compile Include="appManager\LoginHelper.cs" />
+    <Compile Include="appManager\NavigationHelper.cs" />
+    <Compile Include="model\AccountData.cs" />
+    <Compile Include="model\ContactData.cs" />
+    <Compile Include="model\GroupData.cs" />
+    <Compile Include="tests\ContactCreationTests.cs" />
+    <Compile Include="tests\ContactDeleteTest.cs" />
+    <Compile Include="tests\GroupCreationTests.cs" />
+    <Compile Include="tests\GroupRemovalTest.cs" />
+    <Compile Include="tests\TestBase.cs" />
+    <Compile Include="tests\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GroupCreationTests.cs" />
-    <Compile Include="ContactCreationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
