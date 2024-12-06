@@ -13,7 +13,7 @@ namespace WebAddressbookTests
     {
 
         [Test]
-       //[Ignore("Skip this test")]
+      // [Ignore("Skip this test")]
         public void GroupModificationTest()
         {
             GroupData newData = new GroupData("Group_Modify_Name2");

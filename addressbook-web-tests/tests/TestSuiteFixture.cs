@@ -20,7 +20,14 @@ namespace WebAddressbookTests
             app.Auth.Login(new AccountData("admin", "secret"));
 
         }
+        [OneTimeTearDown]
 
+
+        public void StopApplicationManager()
+        {
+            ApplicationManager.GetInstance().Stop();
+
+        }
 
     }
 }

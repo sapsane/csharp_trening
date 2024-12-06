@@ -104,7 +104,22 @@ namespace WebAddressbookTests
             }
         }
 
-       
+        public void Stop() 
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                //ignore errors
+            }
+        }
+
+
+
+
+
     }
 
 
