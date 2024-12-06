@@ -104,6 +104,7 @@
     <Compile Include="tests\GroupModificationTests.cs" />
     <Compile Include="tests\GroupRemovalTest.cs" />
     <Compile Include="tests\TestBase.cs" />
+    <Compile Include="tests\TestSuiteFixture.cs" />
     <Compile Include="tests\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
