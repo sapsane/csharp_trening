@@ -95,7 +95,6 @@ namespace WebAddressbookTests
            // driver.FindElement(By.Name("firstname")).Clear();
            // driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
             driver.FindElement(By.Name("lastname")).Click();
-
             Type(By.Name("lastname"), contact.Lastname);
       
             return this;

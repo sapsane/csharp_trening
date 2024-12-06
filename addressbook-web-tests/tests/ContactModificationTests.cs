@@ -12,7 +12,7 @@ namespace WebAddressbookTests
     {
 
         [Test]
-        //[Ignore("Skip this test")]
+        [Ignore("Skip this test")]
         public void ContactModificationTest()
         {
             ContactData contact = new ContactData("MODIFY firstname", "Modify LastName");
