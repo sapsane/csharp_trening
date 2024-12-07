@@ -115,11 +115,11 @@ namespace WebAddressbookTests
         }
 
 
-        public bool IsGroupPresent()
+        public  bool  IsGroupPresent()
         {
             manager.Navigator.GoToGroupsPage();
             return IsElementPresent(By.Name("selected[]"));
-
+             
         }
 
     }

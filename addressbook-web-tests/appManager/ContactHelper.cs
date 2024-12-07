@@ -114,7 +114,15 @@ namespace WebAddressbookTests
             return this;
         }
 
-
+        public bool IsContactPresent() 
+        {
+            manager.Navigator.OpenContactsPage();
+            return  IsElementPresent(By.Name("selected[]"));
+        
+        }
   
+
+
+
     }
 }

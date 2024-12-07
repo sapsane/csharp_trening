@@ -17,7 +17,7 @@ namespace WebAddressbookTests
         //[Ignore("Skip this test")]
         public void GroupModificationTest()
         {
-            if (!app.Groups.IsGroupPresent())
+            if ( ! app.Groups.IsGroupPresent())
             {
                 GroupData group = new GroupData("GroupName NEW");
                 group.Header = "header new";

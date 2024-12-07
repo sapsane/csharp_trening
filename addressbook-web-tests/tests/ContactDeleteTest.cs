@@ -16,23 +16,20 @@ namespace WebAddressbookTests
 
 
         [Test]
-        [Ignore("Skip this test")]
+        //[Ignore("Skip this test")]
         public void ContactDeleteTest()
         {
+            if ( ! app.Contacts.IsContactPresent()) 
+            {
+                ContactData contact = new ContactData("Fistname NEW", "Lastname NEW");
+                app.Contacts.CreateContact(contact);
+            }
+
+
             app.Contacts.Delete(2);
                       
         }
 
-
-
-
-    
-        
-      
-
-
-
-   
-
+       
     }
 }
