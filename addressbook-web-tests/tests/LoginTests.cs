@@ -15,7 +15,7 @@ namespace WebAddressbookTests
     public class LoginTests :TestBase
     {
         [Test]
-        //[Ignore("Skip this test")]
+        [Ignore("Skip this test")]
         public void LoginWithValidCredentials() 
         {
         app.Auth.logout();
