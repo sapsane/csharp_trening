@@ -16,12 +16,22 @@ namespace WebAddressbookTests
      
 
         [Test]
-        [Ignore("Skip this test")]
+       // [Ignore("Skip this test")]
         public void GroupRemovalTest()
         {
+            if (! app.Groups.IsGroupPresent())
+            {
+                GroupData group = new GroupData("GroupName NEW");
+                group.Header = "header new";
+                group.Footer = "footer new";
+
+                app.Groups.CreateGroup(group);
+            }
+
             app.Groups.Remove(1);
          
         }
-        
+
+      
     }
 }

@@ -18,10 +18,11 @@ namespace WebAddressbookTests
       
 
         [Test]
-        [Ignore("Skip this test")]
+       [Ignore("Skip this test")]
         public void GroupCreationTest()
         {
-                    
+    
+            
             GroupData group = new GroupData("GroupName1");
             group.Header = "header1";
             group.Footer = "footer";
