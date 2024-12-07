@@ -14,14 +14,19 @@ namespace WebAddressbookTests
         protected ApplicationManager app;
 
         [OneTimeSetUp]
-        public void SetupTest()
+        public void SetupApplicationManager()
         {
             app = ApplicationManager.GetInstance();
+           
 
         }
 
-       
+        [OneTimeTearDown]
+        public void StopApplicationManager()
+        {
+            ApplicationManager.GetInstance().Stop();
 
+        }
 
 
     }
