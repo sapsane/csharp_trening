@@ -9,6 +9,8 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
+
 
 namespace WebAddressbookTests
 {
@@ -18,7 +20,7 @@ namespace WebAddressbookTests
       
 
         [Test]
-       [Ignore("Skip this test")]
+       //[Ignore("Skip this test")]
         public void GroupCreationTest()
         {
     
@@ -27,14 +29,23 @@ namespace WebAddressbookTests
             group.Header = "header1";
             group.Footer = "footer";
 
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+
             app.Groups.CreateGroup(group);
             
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
+
+            Assert.AreEqual(oldGroups, newGroups);
            
         }
 
 
         [Test]
-        [Ignore("Skip this test")]
+        //[Ignore("Skip this test")]
         public void EmptyGroupCreationTest()
         {
                       
@@ -42,10 +53,43 @@ namespace WebAddressbookTests
             group.Header = "";
             group.Footer = "";
 
-            app.Groups.CreateGroup(group);
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
             
+            app.Groups.CreateGroup(group);
+
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
+
+            Assert.AreEqual(oldGroups, newGroups);
 
         }
+
+
+        
+        [Test]
+        //[Ignore("Skip this test")]
+        public void BadNameGroupCreationTest()
+        {
+
+            GroupData group = new GroupData("a'a");
+            group.Header = "";
+            group.Footer = "";
+
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            app.Groups.CreateGroup(group);
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
+
+            Assert.AreEqual(oldGroups, newGroups);
+
+        }
+        
 
 
     }

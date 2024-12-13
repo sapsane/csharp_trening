@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -66,7 +67,7 @@ namespace WebAddressbookTests
 
         public ContactHelper SelectContact(int index)
         {
-            driver.FindElement(By.XPath("//tr[" + index + "]/td/input")).Click();
+            driver.FindElement(By.XPath("//tr[" + (index+2) + "]/td/input")).Click();
             return this;
         }
 
@@ -120,9 +121,37 @@ namespace WebAddressbookTests
             return  IsElementPresent(By.Name("selected[]"));
         
         }
-  
+
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigator.OpenContactsPage();
+            ICollection<IWebElement> row = driver.FindElements(By.CssSelector("tr"));
+
+            foreach (IWebElement row2 in row)
+            {                
+                IList<IWebElement> cells = row2.FindElements(By.TagName("td"));
+                if (!(cells.Count == 0)) 
+                {
+                   
+                 
+                    //фамилия
+                    string lastname = cells[1].Text;
+                    //имя
+                    string firstname = cells[2].Text;
+
+                    string id = cells[0].FindElement(By.Name("selected[]")).GetDomAttribute( "Value");
+
+                    ContactData contact = new ContactData(firstname, lastname ,id) ;
+                    contacts.Add(contact);
 
 
 
+                }
+            }
+
+            return contacts;
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -16,27 +17,60 @@ namespace WebAddressbookTests
     {
       
         [Test]
-        [Ignore("Skip this test")]
+        //[Ignore("Skip this test")]
         public void ContactCreationTest()
         {
-             
-            ContactData contact = new ContactData("Fistname1", "Lastname1");
-            app.Contacts.CreateContact(contact);
 
+
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+
+            ContactData contact = new ContactData("Fistname1", "Lastname1","");
+            app.Contacts.CreateContact(contact);
             
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+
+            oldContacts.Add(contact);
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
+
         }
 
         [Test]
-        [Ignore("Skip this test")]
+        //[Ignore("Skip this test")]
         public void EmptyContactCreationTest()
         {
-                       
-            ContactData contact = new ContactData("", "");
+
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+
+            ContactData contact = new ContactData("", "","");
+            app.Contacts.CreateContact(contact);
+
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+            oldContacts.Add(contact);
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
+        }
+
+        [Test]
+        //[Ignore("Skip this test")]
+        public void BadContactCreationTest()
+        {
+
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
+
+            ContactData contact = new ContactData("a'a", "", "");
             app.Contacts.CreateContact(contact);
 
 
-        }
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+            oldContacts.Add(contact);
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
 
+        }
 
 
 

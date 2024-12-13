@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium;
-using OpenQA.Selenium;
+
+
 
 namespace WebAddressbookTests
 {

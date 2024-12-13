@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium;
+
 
 namespace WebAddressbookTests
 {
