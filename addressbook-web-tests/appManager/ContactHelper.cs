@@ -47,6 +47,7 @@ namespace WebAddressbookTests
         public ContactHelper SubminContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
+            contactCashe = null;
             return this;
         }
 
@@ -77,9 +78,10 @@ namespace WebAddressbookTests
         public ContactHelper DeleteContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            contactCashe = null;
             return this;
         }
-        //------------------------------------------------------------------------
+       
 
 
 
@@ -106,6 +108,7 @@ namespace WebAddressbookTests
         public ContactHelper SubminContactCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            contactCashe = null;
             return this;
         }
 
@@ -122,35 +125,45 @@ namespace WebAddressbookTests
         
         }
 
+
+
+        private List<ContactData> contactCashe = null;
+
+
         public List<ContactData> GetContactList()
         {
-            List<ContactData> contacts = new List<ContactData>();
-            manager.Navigator.OpenContactsPage();
-            ICollection<IWebElement> row = driver.FindElements(By.CssSelector("tr"));
+            if (contactCashe == null) 
+            {
+                contactCashe= new List<ContactData>();
 
-            foreach (IWebElement row2 in row)
-            {                
-                IList<IWebElement> cells = row2.FindElements(By.TagName("td"));
-                if (!(cells.Count == 0)) 
+                manager.Navigator.OpenContactsPage();
+                ICollection<IWebElement> row = driver.FindElements(By.CssSelector("tr"));
+
+                foreach (IWebElement row2 in row)
                 {
-                   
-                 
-                    //фамилия
-                    string lastname = cells[1].Text;
-                    //имя
-                    string firstname = cells[2].Text;
-
-                    string id = cells[0].FindElement(By.Name("selected[]")).GetDomAttribute( "Value");
-
-                    ContactData contact = new ContactData(firstname, lastname ,id) ;
-                    contacts.Add(contact);
+                    IList<IWebElement> cells = row2.FindElements(By.TagName("td"));
+                    if (!(cells.Count == 0))
+                    {
 
 
+                        //фамилия
+                        string lastname = cells[1].Text;
+                        //имя
+                        string firstname = cells[2].Text;
 
+                        string id = cells[0].FindElement(By.Name("selected[]")).GetDomAttribute("Value");
+
+                        ContactData contact = new ContactData(firstname, lastname, id);
+                        contactCashe.Add(contact);
+
+
+
+                    }
                 }
-            }
 
-            return contacts;
+
+            }
+            return new List<ContactData>(contactCashe);
 
         }
     }
