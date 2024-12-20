@@ -166,5 +166,71 @@ namespace WebAddressbookTests
             return new List<ContactData>(contactCashe);
 
         }
+
+        public ContactData GetContactInformationFromTable(int index)
+        {
+            manager.Navigator.OpenContactsPage();
+            IList<IWebElement> cells= driver.FindElements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"));
+            string lastName=cells[1].Text;
+            string firstName = cells[2].Text;
+            string address = cells[3].Text;
+            string allEmail = cells[4].Text;
+            string allPhones = cells[5].Text;
+
+            return new ContactData(firstName, lastName, "")
+            {
+                Address = address,
+                AllEmails = allEmail,
+                AllPhones = allPhones,
+             
+            
+            };
+
+
+        }
+
+        public ContactData GetContactInformationFromEditForm(int index)
+        {
+            manager.Navigator.OpenContactsPage();
+            
+            InitContactModification2(index);
+            string firstName = driver.FindElement(By.Name("firstname")).GetDomAttribute("value");
+            string lastName = driver.FindElement(By.Name("lastname")).GetDomAttribute("value");
+            string address = driver.FindElement(By.Name("address")).GetAttribute("value");
+
+
+            string homePhone = driver.FindElement(By.Name("home")).GetDomAttribute("value");
+            string mobilePhone = driver.FindElement(By.Name("mobile")).GetDomAttribute("value");
+            string workPhone = driver.FindElement(By.Name("work")).GetDomAttribute("value");
+
+
+            string email = driver.FindElement(By.Name("email")).GetDomAttribute("value");
+            string email2 = driver.FindElement(By.Name("email2")).GetDomAttribute("value");
+            string email3 = driver.FindElement(By.Name("email3")).GetDomAttribute("value");
+
+            return new ContactData(firstName, lastName,"")
+            {
+                Address = address,
+                HomePhone = homePhone,
+                MobilePhone = mobilePhone,
+                WorkPhone = workPhone,
+                Email = email,
+                Email2 = email2,
+                Email3 = email3
+            };
+
+        }
+
+        public void InitContactModification2(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+                  .FindElements(By.TagName("td"))[7]
+                  .FindElement(By.TagName("a")).Click();
+            
+        }
+
+
+
     }
 }
