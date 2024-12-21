@@ -209,6 +209,10 @@ namespace WebAddressbookTests
             string email2 = driver.FindElement(By.Name("email2")).GetDomAttribute("value");
             string email3 = driver.FindElement(By.Name("email3")).GetDomAttribute("value");
 
+
+
+         
+
             return new ContactData(firstName, lastName,"")
             {
                 Address = address,
@@ -232,5 +236,32 @@ namespace WebAddressbookTests
 
 
 
+        public void InitContactProperties(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+                  .FindElements(By.TagName("td"))[6]
+                  .FindElement(By.TagName("a")).Click();
+
+        }
+
+        internal string GetContactInformationFromProperties(int index)
+        {
+            manager.Navigator.OpenContactsPage();
+            InitContactProperties(index);
+                      
+            string content = driver.FindElement(By.CssSelector("div#content")).Text;
+
+            return content;
+                       
+
+            
+
+        }
+
+
+
+
+
     }
+
 }

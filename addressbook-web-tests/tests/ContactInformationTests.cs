@@ -28,5 +28,27 @@ namespace WebAddressbookTests
 
         }
 
+
+
+        [Test]
+        //[Ignore("Skip this test")]
+
+        public void TestContactInformationfromProperties()
+        {
+            string fromTable = app.Contacts.GetContactInformationFromProperties(0);
+            ContactData fromForm = app.Contacts.GetContactInformationFromEditForm(0);
+
+
+            //verifications
+            Assert.AreEqual(fromTable, fromForm.Content);
+
+
+
+        }
+
+
+
+
+
     }
 }

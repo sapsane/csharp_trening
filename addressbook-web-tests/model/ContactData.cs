@@ -10,6 +10,7 @@ namespace WebAddressbookTests
     {
         private string allPhones;
         private string allEmails;
+        private string content;
 
         //  private string firstname;
         //  private string lastname;
@@ -36,6 +37,28 @@ namespace WebAddressbookTests
         public string Email { get; set; }
         public string Email2 { get; set; }
         public string Email3 { get; set; }
+
+        public string Content 
+        { 
+            get 
+            {
+                if (content != null)
+                {
+                    return content;
+                }
+                else 
+                { 
+                return Firstname +" "+ Lastname + "\r\n" + Address + "\r\n" + "\r\n"+
+                        "H: " + CleanUp(HomePhone) + "M: "+ CleanUp(MobilePhone) +"W: " + CleanUp(WorkPhone)
+                        + "\r\n" + Email+ "\r\n" + Email2 + "\r\n" + Email3;
+                        
+                }
+            }
+            set
+            {
+                content = value;
+            }
+        }
 
         public string AllPhones 
         {
