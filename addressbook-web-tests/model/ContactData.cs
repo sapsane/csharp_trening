@@ -146,7 +146,7 @@ namespace WebAddressbookTests
 
         public override string ToString()
         {
-            return "Firsrname=" + Firstname + "   Lastname=" + Lastname;
+            return "Firsrname=" + Firstname + "\n Lastname=" + Lastname;
         }
 
         public int CompareTo(ContactData other)

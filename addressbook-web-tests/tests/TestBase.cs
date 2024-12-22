@@ -21,12 +21,12 @@ namespace WebAddressbookTests
 
         }
 
-        [OneTimeTearDown]
-        public void StopApplicationManager()
-        {
-            ApplicationManager.GetInstance().Stop();
+        //[OneTimeTearDown]
+        //public void StopApplicationManager()
+        //{
+        //    ApplicationManager.GetInstance().Stop();
 
-        }
+        //}
 
 
         public static Random rnd = new Random();
