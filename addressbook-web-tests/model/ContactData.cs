@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,13 +47,99 @@ namespace WebAddressbookTests
                 {
                     return content;
                 }
-                else 
-                { 
-                return Firstname +" "+ Lastname + "\r\n" + Address + "\r\n" + "\r\n"+
-                        "H: " + CleanUp(HomePhone) + "M: "+ CleanUp(MobilePhone) +"W: " + CleanUp(WorkPhone)
-                        + "\r\n" + Email+ "\r\n" + Email2 + "\r\n" + Email3;
-                        
+                string fio1 = "";
+
+                if (Firstname == null && Firstname == ""
+                   && Lastname != null && Lastname != "")
+                {
+                    fio1 = fio1+ Lastname;
                 }
+
+                
+                if (Firstname != null&& Firstname !="") 
+                {
+                    fio1 = Firstname ;
+                }
+
+               
+
+
+                if (Firstname != null && Firstname != ""
+                    &&Lastname != null && Lastname != "") 
+                {        
+                    fio1 = fio1 + " " + Lastname;
+                }
+
+
+
+
+
+                string address1 = "";
+
+                if (Address != null && Address !="")
+                {
+                    address1="\r\n"+Address;
+                }
+
+
+
+
+
+                string telefone = "";
+
+                if (HomePhone != null && HomePhone != ""
+                    || MobilePhone != null && MobilePhone != ""
+                    || WorkPhone != null && WorkPhone != ""
+                   ) 
+                {
+                    telefone = telefone + "\r\n";
+                }
+
+       
+
+                if (HomePhone != null && HomePhone != "")
+                {
+                    telefone = telefone + "\r\nH: " + HomePhone;
+                }
+           
+
+                if (MobilePhone != null && MobilePhone != "") 
+                {
+                    telefone= telefone + "\r\nM: " + MobilePhone;
+                }
+                if (WorkPhone != null && WorkPhone != "") 
+                {
+                    telefone=telefone + "\r\nW: " + WorkPhone;
+
+                }
+
+                string emailAll = "";
+
+                if (Email != null && Email != ""
+                    || Email2 != null && Email2 != ""
+                    || Email3 != null && Email3 != "")
+                {
+                    emailAll = "\r\n" + emailAll;
+                }
+
+
+                if (Email != null && Email != "") 
+                {
+                    emailAll=emailAll + "\r\n"+ Email;
+                }
+                if (Email2 != null && Email2 !="")
+                {
+                    emailAll=emailAll + "\r\n" + Email2;
+                }
+                if (Email3 != null && Email3 != "") 
+                {
+                    emailAll = emailAll + "\r\n" + Email3;
+                }
+                string result = fio1 + address1 +   telefone +  emailAll;
+
+                return result;
+
+          
             }
             set
             {
