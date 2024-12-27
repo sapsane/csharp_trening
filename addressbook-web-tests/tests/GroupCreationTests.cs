@@ -10,6 +10,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
 
 
 namespace WebAddressbookTests
@@ -30,11 +33,58 @@ namespace WebAddressbookTests
 
             }
             return groups;
+
+
+
+
+
+
         }
 
-       
+     public static IEnumerable<GroupData> GroupDataFromCSVFile()
+        {
+            List<GroupData> groups = new List<GroupData>();
 
-        [Test,TestCaseSource("RandomGroupDataProvider")]
+            string[] lines = File.ReadAllLines(@"groups.csv");
+            foreach (string l in lines) 
+            {
+               string [] parts= l.Split(',');
+                groups.Add(new GroupData(parts[0])
+                {
+                    Header = parts[1],
+                    Footer = parts[2]
+                });
+
+            }
+
+
+            return groups;
+        }
+
+
+
+
+
+        public static IEnumerable<GroupData> GroupDataFromXmlFile()
+        {
+            List<GroupData> groups = new List<GroupData>();
+
+            return (List<GroupData>)
+                new XmlSerializer(typeof(List<GroupData>))
+                    .Deserialize(new StreamReader(@"groups.xml"));
+
+
+            
+        }
+
+
+
+
+
+
+
+
+        [Test,TestCaseSource("GroupDataFromXmlFile")]
        //[Ignore("Skip this test")]
         public void GroupCreationTest(GroupData group)
         {
