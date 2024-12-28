@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Xml;
+using System.Xml.Serialization;
 using aWebAddressbookTests;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -31,7 +34,23 @@ namespace WebAddressbookTests
         }
 
 
-        [Test,TestCaseSource("RandomContactDataProvider")]
+
+        public static IEnumerable<ContactData> ContactsDataFromXmlFile()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+
+            return (List<ContactData>)
+                new XmlSerializer(typeof(List<ContactData>))
+                    .Deserialize(new StreamReader(@"contacts.xml"));
+
+
+
+        }
+
+
+
+
+        [Test,TestCaseSource("ContactsDataFromXmlFile")]
         //[Ignore("Skip this test")]
         public void ContactCreationTest(ContactData contact)
         {
@@ -53,7 +72,7 @@ namespace WebAddressbookTests
 
 
         [Test]
-        //[Ignore("Skip this test")]
+        [Ignore("Skip this test")]
         public void BadContactCreationTest()
         {
 

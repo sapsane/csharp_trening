@@ -16,6 +16,18 @@ namespace WebAddressbookTests
         //  private string firstname;
         //  private string lastname;
         //  private string id="";   
+
+        public ContactData()
+        {                 
+        }
+        public ContactData(string firstname, string lastname)
+        {
+
+            Firstname = firstname;
+            Lastname = lastname;
+           
+        }
+
         public ContactData( string firstname, string lastname, string id) 
          {
 
