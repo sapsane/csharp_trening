@@ -67,7 +67,8 @@ namespace addressbook_test_data_generators2
                 for (int i = 0; i < count; i++)
                 {
                     contacts.Add(new ContactData(TestBase.GenerateRandomString(10), TestBase.GenerateRandomString(10))
-                    );
+                    { Address= TestBase.GenerateRandomString(10),
+                    });
 
 
                 }
