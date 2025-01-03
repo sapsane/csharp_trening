@@ -23,16 +23,19 @@ namespace WebAddressbookTests
             }
 
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
+            List<ContactData> oldContacts = ContactData.GetAll();
+            oldContacts.Sort();
+            ContactData ToBeModify = oldContacts[0];
 
-            ContactData contact = new ContactData("MODIFY firstname", "Modify LastName", "");
+            ContactData contact = new ContactData("MODIFY1 firstname1", "Modify1 LastName1", "");
 
-            app.Contacts.ModifyContact(0,contact);
+            app.Contacts.ModifyContact(ToBeModify, contact);
 
 
-            List<ContactData> newContacts = app.Contacts.GetContactList();
+            
             oldContacts[0].Firstname= contact.Firstname;
             oldContacts[0].Lastname= contact.Lastname;
+            List<ContactData> newContacts = ContactData.GetAll();
             oldContacts.Sort();
             newContacts.Sort();
             Assert.AreEqual(oldContacts, newContacts);
