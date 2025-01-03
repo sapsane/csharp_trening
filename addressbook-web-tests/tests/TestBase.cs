@@ -10,7 +10,8 @@ using OpenQA.Selenium;
 namespace WebAddressbookTests
 {
     public class TestBase
-    { 
+    {
+        public static bool PERFORM_LONG_UI_CHECKS = true;
         protected ApplicationManager app;
 
         [OneTimeSetUp]

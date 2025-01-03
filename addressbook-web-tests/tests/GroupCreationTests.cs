@@ -19,7 +19,7 @@ using System.Xml.Serialization;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class GroupCreationTests : AuthTestBase
+    public class GroupCreationTests : GroupTestBase
     {
         public static IEnumerable<GroupData> RandomGroupDataProvider() 
         {
@@ -93,11 +93,11 @@ namespace WebAddressbookTests
             
             
 
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            List<GroupData> oldGroups = GroupData.GetAll();
 
             app.Groups.CreateGroup(group);
             
-            List<GroupData> newGroups = app.Groups.GetGroupList();
+            List<GroupData> newGroups = GroupData.GetAll();
 
             oldGroups.Add(group);
             oldGroups.Sort();
@@ -135,7 +135,7 @@ namespace WebAddressbookTests
 
         [Test]
         //[Ignore("Skip this test")]
-        public void TestDBConnectivity()
+        public void TestDBConnectivityContacts()
         {
             DateTime start= DateTime.Now;
             List<GroupData> fromUi = app.Groups.GetGroupList();

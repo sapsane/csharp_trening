@@ -10,7 +10,7 @@ namespace WebAddressbookTests
 {
     [TestFixture]
 
-    public class GroupModificationTests : AuthTestBase
+    public class GroupModificationTests : GroupTestBase
     {
 
         [Test]
@@ -29,15 +29,15 @@ namespace WebAddressbookTests
             
 
             GroupData newData = new GroupData("Group_Modify_Name2");
-
             newData.Header = null;
             newData.Footer = null;
 
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            List<GroupData> oldGroups = GroupData.GetAll();
+            GroupData ToBeModify = oldGroups[0];
 
-            app.Groups.Modify(0, newData);
+            app.Groups.Modify(ToBeModify, newData);
 
-            List<GroupData> newGroups = app.Groups.GetGroupList();
+            List<GroupData> newGroups = GroupData.GetAll();
 
             oldGroups[0].Name=newData.Name;
             oldGroups.Sort();

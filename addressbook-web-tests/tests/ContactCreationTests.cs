@@ -90,6 +90,22 @@ namespace WebAddressbookTests
 
         }
 
+        [Test]
+        //[Ignore("Skip this test")]
+        public void TestDBConnectivity()
+        {
+            DateTime start = DateTime.Now;
+            List<ContactData> fromUi = app.Contacts.GetContactList();
+            DateTime end = DateTime.Now;
+            System.Console.Out.WriteLine("test1=" + end.Subtract(start));
+
+            start = DateTime.Now;
+            List<ContactData> fromDb = ContactData.GetAll();
+
+
+            end = DateTime.Now;
+            System.Console.Out.WriteLine("test2=" + end.Subtract(start));
+        }
 
 
 
