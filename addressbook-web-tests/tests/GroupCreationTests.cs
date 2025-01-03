@@ -5,6 +5,7 @@ using System.Threading;
 using aWebAddressbookTests;
 
 //using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -131,7 +132,23 @@ namespace WebAddressbookTests
             Assert.AreEqual(oldGroups, newGroups);
 
         }
-        
+
+        [Test]
+        //[Ignore("Skip this test")]
+        public void TestDBConnectivity()
+        {
+            DateTime start= DateTime.Now;
+            List<GroupData> fromUi = app.Groups.GetGroupList();
+            DateTime end = DateTime.Now;
+            System.Console.Out.WriteLine("test1="+end.Subtract(start));
+
+            start = DateTime.Now;
+            List<GroupData> fromDb = GroupData.GetAll();
+
+
+            end = DateTime.Now;
+            System.Console.Out.WriteLine("test2="+end.Subtract(start));
+        }
 
 
     }
