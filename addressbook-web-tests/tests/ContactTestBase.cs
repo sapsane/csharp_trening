@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using aWebAddressbookTests;
 using NUnit.Framework;
-using WebAddressbookTests;
+using aWebAddressbookTests;
 
 namespace WebAddressbookTests
 {
-    public class GroupTestBase : AuthTestBase
+    public class ContactTestBase : AuthTestBase
     {
         [TearDown]
-        public void CompareGroupsUI_DB() 
+        public void CompareGroupsUI_DB()
         {
-            if (PERFORM_LONG_UI_CHECKS) 
+            if (PERFORM_LONG_UI_CHECKS)
             {
-                List<GroupData> fromUI = app.Groups.GetGroupList();
-                List<GroupData> fromDB = GroupData.GetAll();
+                List<ContactData> fromUI = app.Contacts.GetContactList();
+                List<ContactData> fromDB = ContactData.GetAll();
                 fromUI.Sort();
                 fromDB.Sort();
                 Assert.AreEqual(fromUI, fromDB);
             }
-           
+
         }
+
+
     }
 }
