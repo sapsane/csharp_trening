@@ -72,7 +72,9 @@ namespace WebAddressbookTests
         [Column(Name = "email3")]
         public string Email3 { get; set; }
 
-       
+
+        [Column(Name = "deprecated")]
+        public string deprecated { get; set; }
 
         public string Content 
         { 
@@ -305,7 +307,7 @@ namespace WebAddressbookTests
         {
             using (AddressBookDB db = new AddressBookDB())
             {
-                return (from g in db.Contacts select g).ToList();
+                return (from c in db.Contacts select c).ToList();
             }
         }
 

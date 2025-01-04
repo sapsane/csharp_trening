@@ -157,10 +157,25 @@ namespace WebAddressbookTests
             foreach (ContactData contact in GroupData.GetAll()[0].GetContacts() )
             {
                  System.Console.Out.WriteLine(contact);
-                ContactData test1 = contact;
-                System.Console.Out.WriteLine(test1);
+              //  ContactData test1 = contact;
+              //  System.Console.Out.WriteLine(test1);
             }
             
         }
+
+
+        [Test]
+        //[Ignore("Skip this test")]
+        public void TestDBConnectivity33()
+        {
+            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
+            {
+                System.Console.Out.WriteLine(contact.deprecated);
+              
+            }
+
+        }
+
+
     }
 }
