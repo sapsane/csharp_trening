@@ -25,7 +25,7 @@ namespace WebAddressbookTests
             List<GroupData> group1 = GroupData.GetAll();
             if (group1.Count == 0)
             {
-                GroupData group2 = new GroupData("Test99");
+                GroupData group2 = new GroupData("TestNew");
                 group2.Header = "";
                 group2.Footer = "";
 
@@ -33,21 +33,30 @@ namespace WebAddressbookTests
 
             }
 
-
             GroupData group = GroupData.GetAll()[0];
             List<ContactData> oldList = group.GetContacts();
-            ContactData contact = ContactData.GetAll().Except(oldList).First();
+            List <ContactData> contact2 = ContactData.GetAll().Except(oldList).ToList();
+            if (contact2.Count == 0) 
+            {
+                ContactData contact7 = new ContactData("TEST77new", "Test77new", "");
+                app.Contacts.CreateContact(contact7);
+            }
+
+            GroupData group3 = GroupData.GetAll()[0];
+            List<ContactData> oldList3 = group.GetContacts();
+
+            ContactData contact = ContactData.GetAll().Except(oldList3).First();
 
             //action
-            app.Contacts.AddContactToGroup(contact, group);
+            app.Contacts.AddContactToGroup(contact, group3);
             //end actions
 
 
             List<ContactData> newList = group.GetContacts();
-            oldList.Add(contact);
+            oldList3.Add(contact);
             newList.Sort();
-            oldList.Sort();
-            Assert.AreEqual(oldList, newList);
+            oldList3.Sort();
+            Assert.AreEqual(oldList3, newList);
 
         }
     }
