@@ -313,6 +313,24 @@ namespace WebAddressbookTests
         {
             new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
+
+        internal void RemovedContactFromGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigator.OpenContactsPage();
+            SetGroupFilter(group.Name);
+            SelectContact3(contact.Id);
+            CommitRemoveFromGroup();
+        }
+
+        private void SetGroupFilter(string groupName)
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText(groupName);
+        }
+
+        private void CommitRemoveFromGroup()
+        {
+            driver.FindElement(By.Name("remove")).Click();
+        }
     }
 
 }
