@@ -55,7 +55,7 @@ namespace WebAddressbookTests
 
             //action
             app.Contacts.AddContactToGroup(contact, group3);
-            //end actions
+            //end actions  конец действия
 
 
             List<ContactData> newList = group.GetContacts();
